@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Sayının Basamaklarını Toplamı</h2>
+        <form>
+            <div class="form-group">
+              <label>Sayı:</label>
+              <input type="text" class="form-control" id="sayi" >
+              <small class="form-text text-muted">Girdiğiniz sayının basamakları toplamı verir.</small>
+            </div>
+            <div class="form-group">
+              <label>İşlem Sonucu:</label>
+              <input type="text" class="form-control" id="sonuc" disabled>
+            </div>
+            <button id="hesapla" type="button" class="btn btn-primary">Hesapla</button>
+            <div class="form-group">
+                <label id="lblsonuc"></label>&nbsp;
+            </div> 
+          </form>
+      </div>
+    <script>
+        var sayi=document.querySelector("#sayi");
+        var sonuc=document.querySelector("#sonuc");
+        var hesapla=document.querySelector("#hesapla");
+        
+        hesapla.onclick=function()
+        {
+            var durum=" ";
+            var adet = 0,toplam=0;
+            var num=Number(sayi.value);
+            console.log(num);
+            while(num != 0)
+            {
+               toplam=(num%10)+toplam;
+               num =Math.floor(num / 10);
+                ++adet;
+            }
+            if(toplam%2==0)
+            {
+                durum=" Bu sayı çifttir. ";
+            }
+            else
+            {
+                durum=" Bu sayı tekir. ";
+            }
+            sonuc.value=toplam;
+            document.getElementById("lblsonuc").innerHTML=durum;
+        } 
+    </script>
+</body>
+</html>
